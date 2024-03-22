@@ -1,0 +1,67 @@
+<html>
+<head>
+<script type = "text/javascript">
+function f1() 
+    {
+        var newReading = parseFloat(document.getElementById("t1").value);
+        var oldReading = parseFloat(document.getElementById("t2").value);
+        var units = newReading - oldReading;
+        var amount = 0;
+ 
+        if (units > 0 && units <= 100) 
+        {
+            amount = 0; // First 100 units are free
+        } 
+        else if (units > 100 && units <= 200)
+        {
+            amount = (units - 100) * 2; // Rs. 2 per unit for 101-200 units
+        } 
+        else if (units > 200 && units <= 300) 
+        {
+            amount = 100 * 2 + (units - 200) * 3; // Rs. 3 per unit for 201-300 units
+        } 
+        else if (units > 300 && units <= 400)
+        {
+            amount = 100 * 2 + 100 * 3 + (units - 300) * 4; // Rs. 4 per unit for 301-400 units
+        }
+        else if (units > 400)
+        {
+            amount = (units * 5) + (units * 5 * 0.1); // Rs. 5 per unit + 10% tax for units above 400
+        }
+ 
+        document.getElementById("p1").innerText = "Total units: " + units;
+        document.getElementById("p2").innerText = "Amount to be charged: Rs. " + amount;
+    }
+</script>
+</head>
+<body>
+<h1> Electricity bill calculation </h1>
+<br>
+<h2> Enter new meter reading </h2>
+<br>
+<input type = text id = "t1">
+<br>
+<h2> Enter old meter reading </h2>
+<br>
+<input type = text id = "t2">
+<br>
+<br>
+<input type = button id = "b1" value="Calculate Bill" onclick="f1()">
+<br>
+ 
+<br>
+ 
+<p id = "p1"> Total units </p>
+<p id = "p2"> Amount to be charged </p>
+<br>
+<br>
+<table border="2">
+<tr> <td> Units </td> <td> Amount </td> </tr>
+<tr> <td> 1-100 </td> <td> Free </td> </tr>
+<tr> <td> 101-200 </td> <td> Rs. 2 per unit </td> </tr>
+<tr> <td> 201 - 300 </td> <td> Rs.3 per unit </td> </tr>
+<tr> <td> 301 - 400  </td> <td> Rs. 4 per unit </td> </tr>
+<tr> <td> 401 and above </td> <td> Rs.5 + 10% tax </td> </tr>
+</table>
+</body>
+</html>
